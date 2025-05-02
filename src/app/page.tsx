@@ -27,10 +27,10 @@ export default function Home() {
       >
          <Beer className="h-16 w-16 text-primary mx-auto mb-4 animate-bounce" />
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary tracking-tight mb-2">
-          Bachelor Bash Bonanza!
+          Riccardo si SPOSA!
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground font-medium">
-          Pick your poison: Cheers or Challenges?
+          Scegli se bere o se vuoi una sfida!
         </p>
       </motion.div>
 
@@ -46,7 +46,7 @@ export default function Home() {
           aria-label="Get a random cheer"
         >
           <PartyPopper className="mr-2 h-6 w-6" />
-          Get a Cheer!
+          Brinda!
         </Button>
         <Button
           onClick={() => handleGetContent('challenge')}
@@ -55,7 +55,7 @@ export default function Home() {
           aria-label="Get a random challenge"
         >
           <Swords className="mr-2 h-6 w-6" />
-          Get a Challenge!
+          Sfida!
         </Button>
       </motion.div>
 
