@@ -5,7 +5,7 @@ const cheers: ContentItem[] = [
   {
     type: 'cheer',
     text: 'Brinda con la prima persona che hai conosciuto nel gruppo.',
-    imageUrl: 'https://picsum.photos/seed/cheers1/600/400',
+    imageUrl: '/images/occhiali.png',
   },
   {
     type: 'cheer',
@@ -38,6 +38,11 @@ const challenges: ContentItem[] = [
     type: 'challenge',
     text: 'Bevi un cocktail dal naso',
     youtubeVideoId: 'AgS7AmDkNxY', // Example YouTube ID - maybe a karaoke track?
+  },
+  {
+    type: 'challenge',
+    text: 'Mima di zappare a vigna',
+    youtubeVideoId: 'JWl3t7N0YAY', // Example YouTube ID - maybe a karaoke track?
   },
 ];
 
