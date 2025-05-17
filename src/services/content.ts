@@ -311,6 +311,7 @@ const MAX_HISTORY = 10; // Don't repeat content in the last 10 rounds
 
 /**
  * Retrieves a random content item of the specified type that hasn't been shown recently.
+ * Prioritizes items with imageUrl or youtubeVideoId so they appear earlier in the list.
  * @param type The type of content to retrieve ('cheer' or 'challenge').
  * @param excludeId Optional ID to exclude from results (for navigation purposes)
  * @returns A random ContentItem object of the specified type, or null if no content of that type exists.
@@ -328,8 +329,16 @@ export function getRandomContent(type: ContentType, excludeId?: string): Content
     return getRandomContent(type, excludeId);
   }
   
-  const randomIndex = Math.floor(Math.random() * filteredContent.length);
-  const selectedItem = filteredContent[randomIndex];
+  // Split content into two groups: with media (images/videos) and without
+  const contentWithMedia = filteredContent.filter(item => item.imageUrl || item.youtubeVideoId);
+  const contentWithoutMedia = filteredContent.filter(item => !item.imageUrl && !item.youtubeVideoId);
+  
+  // Higher probability (70%) of selecting from items with media if available
+  const useMediaItem = contentWithMedia.length > 0 && (Math.random() < 0.7 || contentWithoutMedia.length === 0);
+  
+  const contentPool = useMediaItem ? contentWithMedia : contentWithoutMedia;
+  const randomIndex = Math.floor(Math.random() * contentPool.length);
+  const selectedItem = contentPool[randomIndex];
   
   // Add to recently shown
   if (selectedItem.id) {
