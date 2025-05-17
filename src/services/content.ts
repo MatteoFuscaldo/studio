@@ -6,36 +6,188 @@ const BASE_PATH = '/studio';
 const cheers: ContentItem[] = [
   {
     type: 'cheer',
-    text: 'Brinda con la prima persona che hai conosciuto nel gruppo. jekill',
-    imageUrl: '{{ site.baseurl }}/images/occhiali.png',
-  },
-  {
-    type: 'cheer',
-    text: 'Brinda con la prima persona che hai conosciuto nel gruppo. double',
-    imageUrl: `${BASE_PATH}/images/occhiali.png`,
-  },
-  {
-    type: 'cheer',
-    text: 'Brinda con la prima persona che hai conosciuto nel gruppo. single',
-    imageUrl: '../images/occhiali.png',
+    text: 'Brinda con la prima persona del gruppo con cui sei andato in vacanza.',
+    imageUrl: `${BASE_PATH}/images/tuffi.jpg`,
   },
   {
     type: 'cheer',
     text: 'Brinda per ogni volta che hai detto "soffritto" questo mese.',
+    imageUrl: `${BASE_PATH}/images/soffritto.jpg`,
   },
   {
     type: 'cheer',
     text: 'Brinda con il più scarso a basket.',
-    youtubeVideoId: 'dQw4w9WgXcQ', // Example YouTube ID
+    imageUrl: `${BASE_PATH}/images/basket.jpg`,
   },
    {
     type: 'cheer',
     text: 'Brinda con chi ti farebbe il culo a zombie.',
+    imageUrl: `https://hips.hearstapps.com/hmg-prod/images/cicciogamer-1571412863.jpg?resize=640:*`,
   },
   {
     type: 'cheer',
     text: 'Brindisi di gruppo.',
-    imageUrl: 'https://picsum.photos/seed/cheers2/600/400',
+    imageUrl: `${BASE_PATH}/images/brindisi.jpg`,
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha avuto piu infortuni',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il miglior nuotatore',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il migliore amico della palla.',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con un prof.',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il piu milanese del gruppo.',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il piu fisicato del gruppo.',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il piu tatuato del gruppo.',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con un cazzo di ingegnere.',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più casinista del gruppo.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha fatto la figuraccia più epica.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più stronzo della compagnia.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il tatuaggio più tamarro.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più ubriacone del gruppo.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il soprannome più volgare.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più fissato con le tipe.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha la macchina più schifosa.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più incasinato con i soldi.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha la ex più pazza.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più negato a ballare.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il lavoro più schifoso.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più fissato col porno.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha combinato il casino più grosso.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha la risata più schifosa.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più fissato con le scommesse.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il tatuaggio più imbarazzante.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più negato con le tipe.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha fatto il viaggio più sfigato.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più famoso per le cazzate.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il capo più rompipalle.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più ossessionato dalla palestra.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il vizio più schifoso.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più tamarro del gruppo.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più famoso per le corna fatte.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il fetish più assurdo.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più incasinato con le droghe.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha il tatuaggio più osceno.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più fissato con le stronzate online.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con chi ha fatto la scopata più imbarazzante.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più noto per le sbronze da coma.'
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con il più cazzone del gruppo.'
   }
 ];
 
@@ -44,7 +196,7 @@ const challenges: ContentItem[] = [
   {
     type: 'challenge',
     text: 'Fai 10 flessioni. Ora!',
-    imageUrl: 'https://picsum.photos/seed/challenge1/600/400',
+    imageUrl: `${BASE_PATH}/images/superman.jpg`,
   },
   {
     type: 'challenge',
@@ -86,10 +238,51 @@ const challenges: ContentItem[] = [
     text: '15+18? Ripeti la tabellina 7 al contrario senza sbagliare, se sbagli bevi.',
     youtubeVideoId: '9tzXmOauEy0', // Example YouTube ID - maybe a karaoke track?
   },
-
-
-
-  
+  {
+    type: 'challenge',
+    text: 'Fai una garo di sputo con Mirko',
+    imageUrl: `${BASE_PATH}/images/sputo.jpg`,
+  },
+  {
+    type: 'challenge',
+    text: 'Canta una serenata a uno sconosciuto in strada'
+  },
+  {
+    type: 'challenge',
+    text: 'Chiedi a una cameriera di inventare un cocktail e bevilo'
+  },
+  {
+    type: 'challenge',
+    text: 'Indossa un capo di abbigliamento al contrario per un’ora'
+  },
+  {
+    type: 'challenge',
+    text: 'Convinci uno sconosciuto a scambiare un accessorio con te'
+  },
+  {
+    type: 'challenge',
+    text: 'Fai un brindisi epico in un bar davanti a tutti'
+  },
+  {
+    type: 'challenge',
+    text: 'Chiedi a un passante di consigliarti una mossa di ballo e mostrala'
+  },
+  {
+    type: 'challenge',
+    text: 'Fai una gara di ballo con un amico in mezzo alla strada'
+  },
+  {
+    type: 'challenge',
+    text: 'Ordina un piatto a sorpresa al ristorante e mangialo'
+  },
+  {
+    type: 'challenge',
+    text: 'Inventa un soprannome per ogni partecipante e usalo tutta la sera'
+  },
+  {
+    type: 'challenge',
+    text: 'Convinci un gruppo di persone a fare un trenino con te'
+  }
 ];
 
 // Combine all content
