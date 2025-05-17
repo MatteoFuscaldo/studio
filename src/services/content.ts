@@ -44,6 +44,40 @@ const challenges: ContentItem[] = [
     text: 'Mima di zappare a vigna',
     youtubeVideoId: 'JWl3t7N0YAY', // Example YouTube ID - maybe a karaoke track?
   },
+  {
+    type: 'challenge',
+    text: 'Te posso canta na canzone! Canta un ritornello in mezzo a una piazza / bar',
+    youtubeVideoId: 'lawoYDTbcwU', // Example YouTube ID - maybe a karaoke track?
+  },
+  {
+    type: 'challenge',
+    text: 'Cerca di vendere il tuo cellulare per un maximo ritorno',
+    youtubeVideoId: 'qYubEfDfue4', // Example YouTube ID - maybe a karaoke track?
+  },
+  {
+    type: 'challenge',
+    text: 'Questa è benzina! Fatti dare un accendino per accendere una sizza.',
+    youtubeVideoId: '0c6980BkqOE', // Example YouTube ID - maybe a karaoke track?
+  },
+  {
+    type: 'challenge',
+    text: 'Ho pagato e non me fanno entra! Paga da bere a uno del gruppo. Hai pagato ma non bevi.',
+    youtubeVideoId: 'LBFg4kQUQLY', // Example YouTube ID - maybe a karaoke track?
+  },
+  {
+    type: 'challenge',
+    text: 'Chiedi una sigaretta senza che nessuno chiami il 118',
+    youtubeVideoId: 'MUAvAx9skgI', // Example YouTube ID - maybe a karaoke track?
+  },
+  {
+    type: 'challenge',
+    text: '15+18? Ripeti la tabellina 7 al contrario senza sbagliare, se sbagli bevi.',
+    youtubeVideoId: '9tzXmOauEy0', // Example YouTube ID - maybe a karaoke track?
+  },
+
+
+
+  
 ];
 
 // Combine all content
