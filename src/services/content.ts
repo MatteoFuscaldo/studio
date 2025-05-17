@@ -4,8 +4,18 @@ import type { ContentItem, ContentType } from '@/types/content';
 const cheers: ContentItem[] = [
   {
     type: 'cheer',
-    text: 'Brinda con la prima persona che hai conosciuto nel gruppo.',
-    imageUrl: '/images/occhiali.png',
+    text: 'Brinda con la prima persona che hai conosciuto nel gruppo. jekill',
+    imageUrl: '{{ site.baseurl }}/images/occhiali.png',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con la prima persona che hai conosciuto nel gruppo. double',
+    imageUrl: '../../images/occhiali.png',
+  },
+  {
+    type: 'cheer',
+    text: 'Brinda con la prima persona che hai conosciuto nel gruppo. single',
+    imageUrl: '../images/occhiali.png',
   },
   {
     type: 'cheer',
