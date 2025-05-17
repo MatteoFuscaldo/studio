@@ -5,10 +5,13 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { ContentItem } from '@/types/content';
-import { PartyPopper, Swords } from 'lucide-react';
+import { PartyPopper, Swords, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getAdjacentContent } from '@/services/content';
+import { Button } from '@/components/ui/button';
 
 interface ContentDisplayProps {
   content: ContentItem | null;
+  onContentChange?: (content: ContentItem) => void;
 }
 
 const cardVariants = {
@@ -17,21 +20,30 @@ const cardVariants = {
   exit: { opacity: 0, y: -20, scale: 0.95 },
 };
 
-const ContentDisplay: React.FC<ContentDisplayProps> = ({ content }) => {
+const ContentDisplay: React.FC<ContentDisplayProps> = ({ content, onContentChange }) => {
   const Icon = content?.type === 'cheer' ? PartyPopper : Swords;
   const title = content?.type === 'cheer' ? 'Cheers!' : 'Challenge!';
+
+  const handleNavigation = (direction: 'next' | 'prev') => {
+    if (!content?.id) return;
+    
+    const adjacentContent = getAdjacentContent(content.id, direction);
+    if (adjacentContent && onContentChange) {
+      onContentChange(adjacentContent);
+    }
+  };
 
   return (
     <AnimatePresence mode="wait">
       {content && (
         <motion.div
-          key={content.text} // Use text as key for re-animation on change
+          key={content.id || content.text} // Use ID or text as key for re-animation on change
           initial="hidden"
           animate="visible"
           exit="exit"
           variants={cardVariants}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="w-full max-w-md mt-8"
+          className="w-full max-w-2xl mt-8 relative" // Increased from max-w-md to max-w-2xl
         >
           <Card className="bg-card shadow-xl overflow-hidden border-primary border-2 rounded-xl">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 bg-secondary text-secondary-foreground p-4 rounded-t-lg">
@@ -69,6 +81,31 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({ content }) => {
               )}
             </CardContent>
           </Card>
+          
+          {/* Navigation arrows */}
+          <div className="absolute inset-y-0 left-0 flex items-center">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm shadow-lg -ml-6 hover:bg-background"
+              onClick={() => handleNavigation('prev')}
+              aria-label="Previous content"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </Button>
+          </div>
+          
+          <div className="absolute inset-y-0 right-0 flex items-center">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm shadow-lg -mr-6 hover:bg-background"
+              onClick={() => handleNavigation('next')}
+              aria-label="Next content"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </Button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

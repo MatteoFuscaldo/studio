@@ -17,6 +17,10 @@ export default function Home() {
     setCurrentContent(newContent);
   };
 
+  const handleContentChange = (newContent: ContentItem) => {
+    setCurrentContent(newContent);
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12 md:p-24 bg-gradient-to-br from-background to-secondary">
        <motion.div
@@ -59,7 +63,10 @@ export default function Home() {
         </Button>
       </motion.div>
 
-      <ContentDisplay content={currentContent} />
+      <ContentDisplay 
+        content={currentContent} 
+        onContentChange={handleContentChange} 
+      />
 
     </main>
   );

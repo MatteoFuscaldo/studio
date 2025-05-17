@@ -23,4 +23,8 @@ export interface ContentItem {
    * An optional YouTube video ID.
    */
   youtubeVideoId?: string;
+  /**
+   * Unique identifier for the content item
+   */
+  id?: string;
 }
