@@ -5,26 +5,31 @@ const BASE_PATH = '/studio';
 // --- Define Cheers ---
 const cheers: ContentItem[] = [
   {
+    id: 'cheer-1',
     type: 'cheer',
     text: 'Brinda con la prima persona del gruppo con cui sei andato in vacanza.',
     imageUrl: `${BASE_PATH}/images/tuffi.jpg`,
   },
   {
+    id: 'cheer-2',
     type: 'cheer',
     text: 'Brinda per ogni volta che hai detto "soffritto" questo mese.',
     imageUrl: `${BASE_PATH}/images/soffritto.jpg`,
   },
   {
+    id: 'cheer-3',
     type: 'cheer',
     text: 'Brinda con il più scarso a basket.',
     imageUrl: `${BASE_PATH}/images/basket.jpg`,
   },
    {
+    id: 'cheer-4',
     type: 'cheer',
     text: 'Brinda con chi ti farebbe il culo a zombie.',
     imageUrl: `https://hips.hearstapps.com/hmg-prod/images/cicciogamer-1571412863.jpg?resize=640:*`,
   },
   {
+    id: 'cheer-5',
     type: 'cheer',
     text: 'Brindisi di gruppo.',
     imageUrl: `${BASE_PATH}/images/brindisi.jpg`,
@@ -194,6 +199,7 @@ const cheers: ContentItem[] = [
 // --- Define Challenges ---
 const challenges: ContentItem[] = [
   {
+    id: 'challenge-1',
     type: 'challenge',
     text: 'Fai 10 flessioni. Ora!',
     imageUrl: `${BASE_PATH}/images/superman.jpg`,
@@ -288,22 +294,95 @@ const challenges: ContentItem[] = [
 // Combine all content
 const allContent: ContentItem[] = [...cheers, ...challenges];
 
+// Add IDs to content items that don't have them already
+allContent.forEach((item, index) => {
+  if (!item.id) {
+    item.id = `${item.type}-${index + 1}`;
+  }
+});
+
+// Keep track of recently shown content to avoid repeats
+const recentlyShown = {
+  cheer: new Set<string>(),
+  challenge: new Set<string>(),
+};
+
+const MAX_HISTORY = 10; // Don't repeat content in the last 10 rounds
+
 /**
- * Retrieves a random content item of the specified type.
+ * Retrieves a random content item of the specified type that hasn't been shown recently.
  * @param type The type of content to retrieve ('cheer' or 'challenge').
+ * @param excludeId Optional ID to exclude from results (for navigation purposes)
  * @returns A random ContentItem object of the specified type, or null if no content of that type exists.
  */
-export function getRandomContent(type: ContentType): ContentItem | null {
-  const filteredContent = allContent.filter(item => item.type === type);
+export function getRandomContent(type: ContentType, excludeId?: string): ContentItem | null {
+  const filteredContent = allContent.filter(item => 
+    item.type === type && 
+    !recentlyShown[type].has(item.id || '') &&
+    item.id !== excludeId
+  );
+  
+  // If all content has been shown recently, reset history but still exclude current item
   if (filteredContent.length === 0) {
-    return null; // No content of this type available
+    recentlyShown[type].clear();
+    return getRandomContent(type, excludeId);
   }
+  
   const randomIndex = Math.floor(Math.random() * filteredContent.length);
-  return filteredContent[randomIndex];
+  const selectedItem = filteredContent[randomIndex];
+  
+  // Add to recently shown
+  if (selectedItem.id) {
+    recentlyShown[type].add(selectedItem.id);
+    
+    // If we exceed history limit, remove oldest items
+    if (recentlyShown[type].size > MAX_HISTORY) {
+      const iterator = recentlyShown[type].values();
+      recentlyShown[type].delete(iterator.next().value);
+    }
+  }
+  
+  return selectedItem;
 }
 
 /**
- * Retrieves all content items (useful if needed elsewhere, though not currently used by page).
+ * Retrieves all content items of a specific type.
+ * @param type The type of content to retrieve.
+ * @returns An array of ContentItem objects of the specified type.
+ */
+export function getContentByType(type: ContentType): ContentItem[] {
+  return allContent.filter(item => item.type === type);
+}
+
+/**
+ * Retrieves the next or previous content item relative to the current one.
+ * @param currentId The ID of the current content item.
+ * @param direction 'next' or 'prev' to indicate navigation direction.
+ * @returns The next or previous ContentItem, or null if none exists.
+ */
+export function getAdjacentContent(currentId: string | undefined, direction: 'next' | 'prev'): ContentItem | null {
+  if (!currentId) return null;
+  
+  const currentItem = allContent.find(item => item.id === currentId);
+  if (!currentItem) return null;
+  
+  const typeContent = allContent.filter(item => item.type === currentItem.type);
+  const currentIndex = typeContent.findIndex(item => item.id === currentId);
+  
+  if (currentIndex === -1) return null;
+  
+  let newIndex;
+  if (direction === 'next') {
+    newIndex = (currentIndex + 1) % typeContent.length;
+  } else {
+    newIndex = (currentIndex - 1 + typeContent.length) % typeContent.length;
+  }
+  
+  return typeContent[newIndex];
+}
+
+/**
+ * Retrieves all content items (useful if needed elsewhere).
  * @returns An array of all ContentItem objects.
  */
 export function getAllContent(): ContentItem[] {
