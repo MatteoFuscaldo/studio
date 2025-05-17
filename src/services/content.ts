@@ -1,5 +1,7 @@
 import type { ContentItem, ContentType } from '@/types/content';
 
+const BASE_PATH = '/studio';
+
 // --- Define Cheers ---
 const cheers: ContentItem[] = [
   {
@@ -10,7 +12,7 @@ const cheers: ContentItem[] = [
   {
     type: 'cheer',
     text: 'Brinda con la prima persona che hai conosciuto nel gruppo. double',
-    imageUrl: '../../images/occhiali.png',
+    imageUrl: `${BASE_PATH}/images/occhiali.png`,
   },
   {
     type: 'cheer',
