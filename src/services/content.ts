@@ -338,7 +338,10 @@ export function getRandomContent(type: ContentType, excludeId?: string): Content
     // If we exceed history limit, remove oldest items
     if (recentlyShown[type].size > MAX_HISTORY) {
       const iterator = recentlyShown[type].values();
-      recentlyShown[type].delete(iterator.next().value);
+      const oldestValue = iterator.next().value;
+      if (oldestValue) {
+        recentlyShown[type].delete(oldestValue);
+      }
     }
   }
   
